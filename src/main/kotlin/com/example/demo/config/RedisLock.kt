@@ -1,13 +1,14 @@
 package com.example.demo.config
 
 import org.springframework.data.redis.core.RedisTemplate
+import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Component
 import java.time.Duration
 
 
 @Component
 class RedisLock(
-    private val redisTemplate: RedisTemplate<String, String>
+    private val redisTemplate: StringRedisTemplate
 ) {
 
     fun lock(key: String): Boolean? {
