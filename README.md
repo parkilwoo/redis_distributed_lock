@@ -1,5 +1,5 @@
 # redis_distributed_lock
-코프링을 이용한 Redis를 이용한 분산락을 구현
+코프링 + Redis를 이용한 분산락을 구현
 
 ### 개발환경
 * Java 17
@@ -8,6 +8,7 @@
 * Gradle 8.0
 * docker 20.10.17
 * docker-compose 2.6.1
+* (Optinal) Jprofiler 14
 
 ### 테스트 방식
 1. 락을 사용하지 않은 상태에서 동시성 이슈 확인
