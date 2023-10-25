@@ -14,7 +14,7 @@ class RedisLock(
     fun lock(key: String): Boolean? {
         return redisTemplate
             .opsForValue()
-            .setIfAbsent(key, "LOCK", Duration.ofMillis(5_000))
+            .setIfAbsent(key, true, Duration.ofMillis(5_000))
     }
 
     fun unLock(key: String): Boolean {
