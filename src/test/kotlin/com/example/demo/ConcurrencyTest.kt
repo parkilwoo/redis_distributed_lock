@@ -63,5 +63,22 @@ class ConcurrencyTest @Autowired constructor(
                 assertThat(itemService.getFailCount()).isEqualTo(50)
             }
         }
+
+        context("AOP를 이용한 분산락을 구현할 경우") {
+            it("동시성이 보장되어 남은 재고갯수가 0개이다. AOP를 이용했으므로 실제 Service 코드는 간결해진다") {
+                runBlocking {
+                    val jobs = List(requestCount) {
+                        async(Dispatchers.Default) {
+                            itemService.purchaseItemWithRedissonUseAOP("사과")
+                        }
+                    }
+                    jobs.forEach { it.await() }
+                }
+
+                val stockCount: Int = itemService.getItemStock("사과")
+                assertThat(stockCount).isEqualTo(0)
+                assertThat(itemService.getFailCount()).isEqualTo(50)
+            }
+        }
     }
 })

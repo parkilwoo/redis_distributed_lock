@@ -27,4 +27,5 @@
 스핀락의 경우 간단하게 구현이 가능하지만, CPU 사용량이 많아지므로 Redisson을 이용한 PUB/SUB 방식을 추천한다.
 
 ### TODO
-AOP를 이용해 락 획득 및 Unlock을 구현한다.
+~~AOP를 이용해 락 획득 및 Unlock을 구현한다.~~ **구현완료**
+<br/>JProfiler를 대체할 프로파일링툴 찾기(visualvm)

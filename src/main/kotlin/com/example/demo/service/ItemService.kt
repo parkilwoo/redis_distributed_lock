@@ -1,5 +1,6 @@
 package com.example.demo.service
 
+import com.example.demo.annotation.DistributedLock
 import com.example.demo.config.RedisLock
 import com.example.demo.domain.entity.Item
 import com.example.demo.repository.ItemRepository
@@ -58,6 +59,11 @@ class ItemService(
                 println("Redisson Lock Already Unlock $name")
             }
         }
+    }
+
+    @DistributedLock
+    fun purchaseItemWithRedissonUseAOP(name: String) {
+        purchaseItem(name)
     }
 
     fun getItemStock(name: String) : Int {
